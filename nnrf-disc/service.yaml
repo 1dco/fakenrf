@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nnrf-disc
+  labels:
+    app: nnrf-disc
+    service: nnrf-disc
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    app: nnrf-disc

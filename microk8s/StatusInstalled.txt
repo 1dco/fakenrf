@@ -1,0 +1,21 @@
+microk8s is running
+addons:
+cilium: disabled
+dashboard: disabled
+dns: enabled
+fluentd: disabled
+gpu: disabled
+helm: disabled
+ingress: disabled
+istio: enabled
+jaeger: disabled
+juju: disabled
+knative: disabled
+kubeflow: disabled
+linkerd: disabled
+metallb: disabled
+metrics-server: disabled
+prometheus: disabled
+rbac: disabled
+registry: enabled
+storage: enabled

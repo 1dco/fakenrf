@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nnrf-disc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nnrf-disc
+  template:
+    metadata:
+      labels:
+        app: nnrf-disc
+    spec:
+      containers:
+      - name: nnrf-disc
+        image: localhost:32000/nnrf-disc:registry
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

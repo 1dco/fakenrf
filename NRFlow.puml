@@ -1,0 +1,23 @@
+@startuml
+participant NF1
+participant NRF_MGMT
+participant DB
+participant NF2
+NF1 -> NRF_MGMT : DELETE request(.. ./nf-instances/{nfInstanceID})
+NRF_MGMT -> DB : db geting request
+NRF_MGMT <- DB : db geting response
+alt NF instance dones't exist
+   NF1 <- NRF_MGMT : Error Answer (Not Found)
+else NF instance exists
+   NRF_MGMT -> DB : db deleting request
+   NRF_MGMT <- DB : db deleting response
+   alt deleting the profile fails
+      NF1 <- NRF_MGMT : Error Answer (Internal Error)
+   else deleting the profile succeeds
+      NF1 <- NRF_MGMT : Successful Answer (No Content)
+   end 
+   opt subscription exists  
+      NF2 <- NRF_MGMT : the notification of NF_DEREGISTERED 
+   end
+end
+@enduml

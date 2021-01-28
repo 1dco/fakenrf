@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nnrf-nfm
+  namespace: nrf
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nnrf-nfm
+  template:
+    metadata:
+      labels:
+        app: nnrf-nfm
+    spec:
+      containers:
+      - name: nnrf-nfm
+        image: localhost:32000/nnrf-nfm:registry
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
